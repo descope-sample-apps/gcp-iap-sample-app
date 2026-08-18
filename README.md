@@ -7,6 +7,9 @@ An internal deploy dashboard with **zero auth code**. No login route, no session
 
 Sign-in and access control happen entirely upstream: Google Cloud IAP sits in front of the app, Descope handles the actual sign-in as an OIDC provider, and Workforce Identity Federation maps Descope's claims onto real Google Cloud IAM identities. IAM decides who reaches which route - before a request ever reaches this container.
 
+> [!NOTE]
+> Release Console is an example app that uses Firestore as a database - it gives you an application to deploy behind IAP. The actual subject of this repo is how IAP, Descope, and Workforce Identity Federation are configured, which the [blog post] covers step by step.
+
 ## How it works
 
 <img width="2294" height="3045" alt="GCP-IAP-Descope-Flow" src="https://github.com/user-attachments/assets/7e16e8c7-dff5-4dfc-ade1-896c2b678dcc" />
