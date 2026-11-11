@@ -4,24 +4,15 @@ function escapeHtml(str) {
   }[c]));
 }
 
-// Shared page shell. The nav always shows all four links, with their
-// required role shown as a badge, to everyone — the app has no idea who's
-// signed in or what they're allowed to do (A8). IAP blocks requests before
-// they reach this container; it doesn't hide links.
+// Shared page shell. Every nav link is shown to everyone, with role badges
+// on /deploy and /admin, because the app doesn't know who's signed in.
+// IAP blocks requests the user isn't allowed to make before they reach
+// this container.
 //
-// The identity shown at the bottom of the sidebar is not an app feature —
-// it's a client-side fetch to a special query parameter IAP itself
-// intercepts and answers directly (gcp-iap-mode=IDENTITY). This file never
-// reads a header, a cookie, or a token; it only points the browser at IAP's
-// own endpoint, which is why this still audits clean (scripts/audit-auth.sh).
+// The signed-in identity in the sidebar comes from IAP, not the app: the
+// browser fetches /?gcp-iap-mode=IDENTITY, which IAP answers directly. This
+// file never reads a header, cookie, or token.
 // Docs: https://cloud.google.com/iap/docs/query-parameters-and-headers-howto
-//
-// (An earlier version also linked gcp-iap-mode=CLEAR_LOGIN_COOKIE as a
-// "Sign out" button. Removed: it only clears IAP's own cookie, not the
-// underlying Descope browser session, so on this single-page-per-service
-// app — where every route requires sign-in and there's no public page to
-// land on — the very next request just silently re-authenticates via SSO.
-// The button looked broken because, for a live session, it functionally is.)
 function layout({ title, body }) {
   return `<!doctype html>
 <html lang="en">

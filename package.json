@@ -5,8 +5,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "audit-auth": "bash scripts/audit-auth.sh"
+    "start": "node server.js"
   },
   "engines": {
     "node": ">=18"

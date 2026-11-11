@@ -3,8 +3,7 @@
 // Every route below does exactly one thing: read or write the data layer and
 // render HTML. Nothing here checks who's calling, validates a token, reads a
 // cookie, or knows about a session. Who can sign in and who can reach which
-// route is decided entirely upstream, in Google Cloud IAP — this file is
-// proof of that claim (see scripts/audit-auth.sh).
+// route is decided entirely upstream, in Google Cloud IAP.
 
 const path = require('path');
 const express = require('express');
