@@ -56,4 +56,4 @@ On a new project, grant the Compute Engine default service account `roles/datast
 
 ## Read more
 
-Full walkthrough: [blog post link]
+Full walkthrough: [blog post link](https://www.descope.com/blog/post/map-claims-gcp-iap)
